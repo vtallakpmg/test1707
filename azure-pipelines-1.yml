@@ -48,7 +48,7 @@ steps:
      {
        "files": [
          {
-           "pattern": "ArtifactoryDevSoftware/Agents.csv",
+           "pattern": "ArtifactoryDevSoftware/checkov-3.2.432-py3-none-any.whl",
            "target": "ArtifactorySoftwareDev"
          }
        ]
