@@ -1,0 +1,55 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- dev
+
+pool: 
+  name: RM-Platforms-Dev
+
+steps:
+- task: JFrog.jfrog-azure-devops-extension.jfrog-generic-artifacts.JFrogGenericArtifacts@1
+  displayName: 'JFrog Generic Download'
+  inputs:
+    command: Upload
+    connection: 'Jfrog-AccessTokens'
+    fileSpec: |
+     {
+       "files": [
+         {
+           "pattern": ""$(build.sourcesDirectory)\\Agents.csv\\*",
+           "target": "ArtifactoryDevSoftware"
+         }
+       ]
+     }
+- task: JFrogGenericArtifacts@1
+  inputs:
+    command: 'Copy'
+    connection: 'Jfrog-AccessTokens'
+    specSource: 'taskConfiguration'
+    fileSpec: |
+      {
+        "files": [
+          {
+            "pattern": "ArtifactoryDevSoftware/Agents.csv",
+            "target": "ArtifactorySoftwareDev/"
+          }
+        ]
+      }
+    failNoOp: true
+- task: JFrog.jfrog-azure-devops-extension.jfrog-generic-artifacts.JFrogGenericArtifacts@1
+  displayName: 'JFrog Generic Download'
+  inputs:
+    command: Move
+    connection: 'Jfrog-AccessTokens'
+    fileSpec: |
+     {
+       "files": [
+         {
+           "pattern": "ArtifactoryDevSoftware/Book1.xlsx",
+           "target": "ArtifactorySoftwareDev"
+         }
+       ]
+     }
