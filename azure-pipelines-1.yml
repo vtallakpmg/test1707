@@ -42,14 +42,22 @@ steps:
 - task: JFrogGenericArtifacts@1
   displayName: 'JFrog Generic Download'
   inputs:
-    command: Move
+    command: 'Move'
     connection: 'AccessToken-Go-SVCVSTSRel'
+    specSource: 'taskConfiguration'
     fileSpec: |
-     {
-       "files": [
-         {
-           "pattern": "ArtifactoryDevSoftware/checkov-3.2.432-py3-none-any.whl",
-           "target": "ArtifactorySoftwareDev"
-         }
-       ]
-     }
+      {
+        "files": [
+          {
+            "pattern": "ArtifactoryDevSoftware/checkov-3.2.432-py3-none-any.whl",
+            "target": "ArtifactorySoftwareDev"
+          }
+        ]
+      }
+    failNoOp: true
+- task: JFrogPublishBuildInfo@1
+  inputs:
+    artifactoryConnection: 'AccessToken-Go-SVCVSTSRel'
+    buildName: '$(Build.DefinitionName)'
+    buildNumber: '$(Build.BuildNumber)'
+
