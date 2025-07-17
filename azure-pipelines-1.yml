@@ -14,7 +14,7 @@ steps:
   displayName: 'JFrog Generic Download'
   inputs:
     command: Upload
-    connection: 'AccessToken-Go-SVCVSTSBuild'
+    connection: 'AccessToken-JfrogArtifactory'
     fileSpec: |
      {
        "files": [
@@ -27,7 +27,7 @@ steps:
 - task: JFrogGenericArtifacts@1
   inputs:
     command: 'Copy'
-    connection: 'AccessToken-Go-SVCVSTSBuild'
+    connection: 'AccessToken-JfrogArtifactory'
     specSource: 'taskConfiguration'
     fileSpec: |
       {
@@ -43,12 +43,12 @@ steps:
   displayName: 'JFrog Generic Download'
   inputs:
     command: Move
-    connection: 'AccessToken-Go-SVCVSTSBuild'
+    connection: 'AccessToken-JfrogArtifactory'
     fileSpec: |
      {
        "files": [
          {
-           "pattern": "ArtifactoryDevSoftware/mssql-jdbc-12.10.1.jre11.jar",
+           "pattern": "ArtifactoryDevSoftware/Agents.csv",
            "target": "ArtifactorySoftwareDev"
          }
        ]
