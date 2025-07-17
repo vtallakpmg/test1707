@@ -48,7 +48,7 @@ steps:
      {
        "files": [
          {
-           "pattern": "ArtifactoryDevSoftware/Book1.xlsx",
+           "pattern": "ArtifactoryDevSoftware/mssql-jdbc-12.10.1.jre11.jar",
            "target": "ArtifactorySoftwareDev"
          }
        ]
