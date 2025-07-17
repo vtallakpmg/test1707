@@ -19,7 +19,7 @@ steps:
      {
        "files": [
          {
-           "pattern": "$(build.sourcesDirectory)\\(*)",
+           "pattern": "$(build.sourcesDirectory)\\**\\*",
            "target": "ArtifactoryDevSoftware"
          }
        ]
