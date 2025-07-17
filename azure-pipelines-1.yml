@@ -14,7 +14,7 @@ steps:
   displayName: 'JFrog Generic Download'
   inputs:
     command: Upload
-    connection: 'Jfrog-AccessTokens'
+    connection: 'AccessToken-JfrogArtifactory'
     fileSpec: |
      {
        "files": [
@@ -27,7 +27,7 @@ steps:
 - task: JFrogGenericArtifacts@1
   inputs:
     command: 'Copy'
-    connection: 'Jfrog-AccessTokens'
+    connection: 'AccessToken-JfrogArtifactory'
     specSource: 'taskConfiguration'
     fileSpec: |
       {
@@ -43,7 +43,7 @@ steps:
   displayName: 'JFrog Generic Download'
   inputs:
     command: Move
-    connection: 'Jfrog-AccessTokens'
+    connection: 'AccessToken-JfrogArtifactory'
     fileSpec: |
      {
        "files": [
