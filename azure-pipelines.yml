@@ -1,0 +1,26 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool: 
+  name: RM-Platforms-Dev
+
+steps:
+- task: JFrog.jfrog-azure-devops-extension.jfrog-generic-artifacts.JFrogGenericArtifacts@1
+  displayName: 'JFrog Generic Download'
+  inputs:
+    command: Upload
+    connection: 'Jfrog-AccessTokens'
+    fileSpec: |
+     {
+       "files": [
+         {
+           "pattern": "test1707",
+           "target": "ArtifactoryDevSoftware"
+         }
+       ]
+     }
