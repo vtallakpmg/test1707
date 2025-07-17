@@ -14,7 +14,7 @@ steps:
   displayName: 'JFrog Generic Download'
   inputs:
     command: Upload
-    connection: 'AccessToken-Go-SVCVSTSBuild'
+    connection: 'AccessToken-Go-SVCVSTSRel'
     fileSpec: |
      {
        "files": [
@@ -27,7 +27,7 @@ steps:
 - task: JFrogGenericArtifacts@1
   inputs:
     command: 'Copy'
-    connection: 'AccessToken-Go-SVCVSTSBuild'
+    connection: 'AccessToken-Go-SVCVSTSRel'
     specSource: 'taskConfiguration'
     fileSpec: |
       {
@@ -43,7 +43,7 @@ steps:
   displayName: 'JFrog Generic Download'
   inputs:
     command: Move
-    connection: 'AccessToken-Go-SVCVSTSBuild'
+    connection: 'AccessToken-Go-SVCVSTSRel'
     fileSpec: |
      {
        "files": [
